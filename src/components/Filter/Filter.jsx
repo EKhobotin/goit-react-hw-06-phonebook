@@ -1,20 +1,18 @@
 import React from 'react';
 import { FilterWrap, SearchTitle, SearchInput } from './Filter.styled';
+import { useDispatch } from 'react-redux';
+import { searchContact } from 'store/contactsSlice';
 
-export const Filter = ({ value, inputSearch }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
   const handleSearch = e => {
-    inputSearch(e.target.value);
+    dispatch(searchContact(e.target.value));
   };
 
   return (
     <FilterWrap>
       <SearchTitle>Search Contact</SearchTitle>
-      <SearchInput
-        name="filter"
-        type="text"
-        onChange={handleSearch}
-        value={value}
-      />
+      <SearchInput name="filter" type="text" onChange={handleSearch} />
     </FilterWrap>
   );
 };
