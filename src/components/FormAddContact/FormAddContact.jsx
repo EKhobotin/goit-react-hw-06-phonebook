@@ -3,12 +3,14 @@ import { Form, Container, Label, Button, Input } from './FormAddContact.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import { addContact } from 'store/contactsSlice';
+import { selectContacts } from 'store/selectors';
 
 export const FormAddContact = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const { contacts } = useSelector(state => state.contacts);
+  const { contacts } = useSelector(selectContacts);
+  // console.log(contacts);
   const dispatch = useDispatch();
 
   const handleChangeContact = e => {

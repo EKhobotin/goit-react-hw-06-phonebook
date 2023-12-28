@@ -3,9 +3,10 @@ import { nanoid } from 'nanoid';
 import { List, ListItem, Span } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'store/contactsSlice';
+import { selectContacts } from 'store/selectors';
 
 export const ContactsList = () => {
-  const { contacts, filter } = useSelector(state => state.contacts);
+  const { contacts, filter } = useSelector(selectContacts);
   const dispatch = useDispatch();
   function handleDelete(id) {
     dispatch(deleteContact(id));
